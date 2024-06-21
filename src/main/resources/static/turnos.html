@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Turnos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<header>
+    <h1>Turnos</h1>
+</header>
+<div class="container">
+    <form th:action="@{/clinica/turnos/agregar}" method="post">
+        <select name="odontologo.id" required>
+            <option th:each="odontologo : ${odontologos}" th:value="${odontologo.id}" th:text="${odontologo.nombre}"></option>
+        </select>
+        <select name="paciente.id" required>
+            <option th:each="paciente : ${pacientes}" th:value="${paciente.id}" th:text="${paciente.nombre}"></option>
+        </select>
+        <input type="datetime-local" name="fechaHora" required />
+        <button type="submit">Agregar</button>
+    </form>
+    <ul>
+        <li th:each="turno : ${turnos}">
+            <span th:text="${turno.odontologo.nombre}">Odontólogo</span>
+            <span th:text="${turno.paciente.nombre}">Paciente</span>
+            <span th:text="${turno.fechaHora}">Fecha y Hora</span>
+            <a th:href="@{/clinica/turnos/eliminar/{id}(id=${turno.id})}">Eliminar</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

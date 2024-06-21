@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Odontólogos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<header>
+    <h1>Odontólogos</h1>
+</header>
+<div class="container">
+    <form th:action="@{/clinica/odontologos/agregar}" method="post">
+        <input type="text" name="numeroMatricula" placeholder="Número de Matrícula" required />
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="text" name="apellido" placeholder="Apellido" required />
+        <button type="submit">Agregar</button>
+    </form>
+    <ul>
+        <li th:each="odontologo : ${odontologos}">
+            <span th:text="${odontologo.nombre}">Nombre</span>
+            <span th:text="${odontologo.apellido}">Apellido</span>
+            <span th:text="${odontologo.numeroMatricula}">Número de Matrícula</span>
+            <a th:href="@{/clinica/odontologos/eliminar/{id}(id=${odontologo.id})}">Eliminar</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

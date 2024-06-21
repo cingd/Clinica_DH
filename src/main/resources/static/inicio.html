@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <html lang="es"> <!-- Cambia "es" por el código de idioma adecuado para tu página -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odontológica</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<header>
+    <h1>Bienvenido a la Clínica Odontológica</h1>
+</header>
+<div class="container">
+    <a th:href="@{/clinica/odontologos}">Ver Odontólogos</a>
+    <a th:href="@{/clinica/pacientes}">Ver Pacientes</a>
+    <a th:href="@{/clinica/turnos}">Ver Turnos</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pacientes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}"></script>
+</head>
+<body>
+<header>
+    <h1>Pacientes</h1>
+</header>
+<div class="container">
+    <form th:action="@{/clinica/pacientes/agregar}" method="post">
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="text" name="apellido" placeholder="Apellido" required />
+        <input type="text" name="domicilio" placeholder="Domicilio" required />
+        <input type="text" name="dni" placeholder="DNI" required />
+        <button type="submit">Agregar</button>
+    </form>
+    <ul>
+        <li th:each="paciente : ${pacientes}">
+            <span th:text="${paciente.nombre}">Nombre</span>
+            <span th:text="${paciente.apellido}">Apellido</span>
+            <span th:text="${paciente.domicilio}">Domicilio</span>
+            <span th:text="${paciente.dni}">DNI</span>
+            <a th:href="@{/clinica/pacientes/eliminar/{id}(id=${paciente.id})}">Eliminar</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+
+
